@@ -1,19 +1,18 @@
-_ATTENTION_ Machine Learning Engineres, Data Scientists, & AI Developers using speech-recognition technologies.  Learn how to develop applications that capture voice on any device [here](https://react-mic-gold.professionalreactapp.com/optingejevo96)!
+_ATTENTION_ Machine Learning Engineres, Data Scientists, & AI Developers using speech-recognition technologies. Learn how to develop applications that capture voice on any device [here](https://react-mic-gold.professionalreactapp.com/optingejevo96)!
 
 # React-Mic
 
-Record a user's voice and display as an oscillation (or frequency bars).  Plug-n-play component for React apps.
+Record a user's voice and display as an oscillation (or frequency bars). Plug-n-play component for React apps.
 
-Audio is saved as [WebM](https://en.wikipedia.org/wiki/WebM) audio file format.  Works via the HTML5 MediaRecorder API ([currently only available in Chrome & Firefox](https://caniuse.com/#search=MediaRecorder)).
+Audio is saved as [WebM](https://en.wikipedia.org/wiki/WebM) audio file format. Works via the HTML5 MediaRecorder API ([currently only available in Chrome & Firefox](https://caniuse.com/#search=MediaRecorder)).
 
 Create a FREE account in the [React-Mic member's area](https://react-mic-gold.professionalreactapp.com/optingejevo96) to see how to integrate, configure, and style React-Mic in a professional React.js application.
 
-**PLEASE NOTE**: The WebM audio format is not supported in Safari browsers (including Safari on iOS).  You need to save an audio recording as an MP3 or WAV file in order to get full cross-browser and cross-device support.
+**PLEASE NOTE**: The WebM audio format is not supported in Safari browsers (including Safari on iOS). You need to save an audio recording as an MP3 or WAV file in order to get full cross-browser and cross-device support.
 
 You can do that with the premium enhancement of this component called [React-Mic-Gold](https://react-mic-gold.professionalreactapp.com/sales-page34701298).
 
 Companies that develop speech-recognition apps, voice-activated software, call center software, apps that require audio recording features, or language-learning products all use React-Mic-Gold.
-
 
 ## Installation
 
@@ -53,6 +52,7 @@ MIT
   echoCancellation={boolean} // defaults -> false
   autoGainControl={boolean}  // defaults -> false
   noiseSuppression={boolean} // defaults -> false
+  deviceId={string} // defaults -> null, auto-select
   channelCount={number}     // defaults -> 2 (stereo).  Specify 1 for mono.
   bitRate={256000}          // defaults -> 128000 (128kbps).  React-Mic-Gold only.
   sampleRate={96000}        // defaults -> 44100 (44.1 kHz).  It accepts values only in range: 22050 to 96000 (available in React-Mic-Gold)
@@ -63,33 +63,33 @@ MIT
 
 ## Example
 
-The code snippet below is just a quick example of how to use React-Mic.  To see how to integrate React-Mic into a *real* application, join the [React-Mic private member's area](https://hackingbeautyllc.clickfunnels.com/optin1588882330260) for a complete tutorial.
+The code snippet below is just a quick example of how to use React-Mic. To see how to integrate React-Mic into a _real_ application, join the [React-Mic private member's area](https://hackingbeautyllc.clickfunnels.com/optin1588882330260) for a complete tutorial.
 
 ```js
-import { ReactMic } from 'react-mic';
+import { ReactMic } from "react-mic";
 
 export class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      record: false
-    }
+      record: false,
+    };
   }
 
   startRecording = () => {
     this.setState({ record: true });
-  }
+  };
 
   stopRecording = () => {
     this.setState({ record: false });
-  }
+  };
 
   onData(recordedBlob) {
-    console.log('chunk of real-time data is: ', recordedBlob);
+    console.log("chunk of real-time data is: ", recordedBlob);
   }
 
   onStop(recordedBlob) {
-    console.log('recordedBlob is: ', recordedBlob);
+    console.log("recordedBlob is: ", recordedBlob);
   }
 
   render() {
@@ -101,9 +101,14 @@ export class Example extends React.Component {
           onStop={this.onStop}
           onData={this.onData}
           strokeColor="#000000"
-          backgroundColor="#FF4081" />
-        <button onClick={this.startRecording} type="button">Start</button>
-        <button onClick={this.stopRecording} type="button">Stop</button>
+          backgroundColor="#FF4081"
+        />
+        <button onClick={this.startRecording} type="button">
+          Start
+        </button>
+        <button onClick={this.stopRecording} type="button">
+          Stop
+        </button>
       </div>
     );
   }
@@ -116,11 +121,11 @@ export class Example extends React.Component {
 
 Get your copy of React-Mic-Gold, the premium enhanced version of React-Mic [here](https://react-mic-gold.professionalreactapp.com/sales-page34701298).
 
-[React-Mic-Gold](https://react-mic-gold.professionalreactapp.com/sales-page34701298) lets you record audio as either MP3 or WAV files.  The MP3 audio file format is super compressed which will result in small file sizes, and is widely supported across all devices.  The WAV audio file format is uncompressed and is used when you need professional quality audio; however, the file size is *significantly* larger.
+[React-Mic-Gold](https://react-mic-gold.professionalreactapp.com/sales-page34701298) lets you record audio as either MP3 or WAV files. The MP3 audio file format is super compressed which will result in small file sizes, and is widely supported across all devices. The WAV audio file format is uncompressed and is used when you need professional quality audio; however, the file size is _significantly_ larger.
 
-React-Mic-Gold is built with WebAssembly and Web Workers.  The MP3/WAV encoding process takes place in the browser using WebAssembly which makes it super fast.  Via Web Workers, the encoding process occurs in a separate thread in the browser so the performance of your UI won't be affected.
+React-Mic-Gold is built with WebAssembly and Web Workers. The MP3/WAV encoding process takes place in the browser using WebAssembly which makes it super fast. Via Web Workers, the encoding process occurs in a separate thread in the browser so the performance of your UI won't be affected.
 
-There's no need to set up a separate backend endpoint to convert captured voice/audio into MP3 or WAV.  It all happens in the browser.
+There's no need to set up a separate backend endpoint to convert captured voice/audio into MP3 or WAV. It all happens in the browser.
 
 Plus, you can stream MP3/WAV to any endpoint as voice/audio is being captured via the onData callback.
 
@@ -134,7 +139,7 @@ Also, check out React-Mic-Gold integrated into an actual app [here](https://voic
 
 In React-Mic-Gold, encoding of recorded audio into MP3 format happens in the browser, via a combination of advanced Web technologies (Web Workers and Web Assembly).
 
-You won't have to continuously stream audio data to your back-end server or API endpoint to convert captured audio into an MP3 file.  Althought you can if you want to.
+You won't have to continuously stream audio data to your back-end server or API endpoint to convert captured audio into an MP3 file. Althought you can if you want to.
 
 React-Mic-Gold also comes with an optional pause feature and additional [premium enhancements](https://react-mic-gold.professionalreactapp.com/sales-page34701298).
 
@@ -147,14 +152,13 @@ If you need a version of this React component that only supports the WAV audio f
 
 React-Mic-Plus also comes with an optional pause feature and additional [premium enhancements](https://react-mic-plus.professionalreactapp.com).
 
-**PLEASE NOTE**: Apple does not allow audio recording from the Chrome browser on Iphone/iOS.  To record audio from a web application on an Iphone, a user must use the Safari browser.  There is no way around this.
+**PLEASE NOTE**: Apple does not allow audio recording from the Chrome browser on Iphone/iOS. To record audio from a web application on an Iphone, a user must use the Safari browser. There is no way around this.
 
 &nbsp;
 &nbsp;
-
 
 # Get Support
 
-Join the [Slack channel](https://hackingbeauty-slack-invite.herokuapp.com) if you have any questions or problems with React-Mic or React-Sound-Gold.  I'm here to help you build amazing apps with audio recording capabilities.
+Join the [Slack channel](https://hackingbeauty-slack-invite.herokuapp.com) if you have any questions or problems with React-Mic or React-Sound-Gold. I'm here to help you build amazing apps with audio recording capabilities.
 
 Customers of React-Mic-Gold and associated products develop audio recording apps, voice-activated apps, speech recognition apps, language learning apps, and much more.

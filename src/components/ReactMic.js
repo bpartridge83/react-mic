@@ -4,14 +4,13 @@
 // distortion curve for the waveshaper, thanks to Kevin Ennis
 // http://stackoverflow.com/questions/22312841/waveshaper-node-in-webaudio-how-to-emulate-distortion
 
-import React, { Component }   from 'react'
+import React, { Component } from 'react'
 import {
   string, number, bool, func
 } from 'prop-types'
 import { MicrophoneRecorder } from '../libs/MicrophoneRecorder'
-import AudioPlayer            from '../libs/AudioPlayer'
-import Visualizer             from '../libs/Visualizer'
-
+import AudioPlayer from '../libs/AudioPlayer'
+import Visualizer from '../libs/Visualizer'
 
 export default class ReactMic extends Component {
   constructor(props) {
@@ -52,6 +51,7 @@ export default class ReactMic extends Component {
       echoCancellation,
       autoGainControl,
       noiseSuppression,
+      deviceId,
       channelCount,
       mimeType
     } = this.props
@@ -65,33 +65,41 @@ export default class ReactMic extends Component {
     const soundOptions = {
       echoCancellation,
       autoGainControl,
-      noiseSuppression
+      noiseSuppression,
+      deviceId
     }
 
     if (audioElem) {
       AudioPlayer.create(audioElem)
 
-      this.setState({
-        canvas,
-        canvasCtx
-      }, () => {
-        this.visualize()
-      })
+      this.setState(
+        {
+          canvas,
+          canvasCtx
+        },
+        () => {
+          this.visualize()
+        }
+      )
     } else {
-      this.setState({
-        microphoneRecorder: new MicrophoneRecorder(
-          onStart,
-          onStop,
-          onSave,
-          onData,
-          options,
-          soundOptions
-        ),
-        canvas,
-        canvasCtx
-      }, () => {
-        this.visualize()
-      })
+      this.setState(
+        {
+          microphoneRecorder: new MicrophoneRecorder(
+            onStart,
+            onStop,
+            onSave,
+            onData,
+            options,
+            soundOptions,
+            deviceId
+          ),
+          canvas,
+          canvasCtx
+        },
+        () => {
+          this.visualize()
+        }
+      )
     }
   }
 
@@ -102,13 +110,34 @@ export default class ReactMic extends Component {
     const { canvas, canvasCtx } = this.state
 
     if (visualSetting === 'sinewave') {
-      Visualizer.visualizeSineWave(canvasCtx, canvas, width, height, backgroundColor, strokeColor)
+      Visualizer.visualizeSineWave(
+        canvasCtx,
+        canvas,
+        width,
+        height,
+        backgroundColor,
+        strokeColor
+      )
     } else if (visualSetting === 'frequencyBars') {
-      Visualizer.visualizeFrequencyBars(canvasCtx, canvas, width, height, backgroundColor, strokeColor)
+      Visualizer.visualizeFrequencyBars(
+        canvasCtx,
+        canvas,
+        width,
+        height,
+        backgroundColor,
+        strokeColor
+      )
     } else if (visualSetting === 'frequencyCircles') {
-      Visualizer.visualizeFrequencyCircles(canvasCtx, canvas, width, height, backgroundColor, strokeColor)
+      Visualizer.visualizeFrequencyCircles(
+        canvasCtx,
+        canvas,
+        width,
+        height,
+        backgroundColor,
+        strokeColor
+      )
     }
-  }
+  };
 
   clear() {
     const { width, height } = this.props
@@ -156,5 +185,6 @@ ReactMic.defaultProps = {
   echoCancellation: false,
   autoGainControl: false,
   noiseSuppression: false,
+  deviceId: null,
   channelCount: 2
 }
